@@ -93,9 +93,8 @@ router.post('/login', async (req, res) => {
     const loginValue = email.trim().toLowerCase();
 
     // Check user by email or username
-    const user = await User.findOne({
-      $or: [{ email: loginValue }, { username: loginValue }],
-    });
+    const user = await User.findOne({ email: loginValue }
+    );
 
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
