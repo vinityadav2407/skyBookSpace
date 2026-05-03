@@ -1,5 +1,5 @@
 import express from 'express';
-import cloudinary from '../lib/cloudinary';
+import cloudinary from '../lib/cloudinary.js';
 import User from '../models/User.js';
 import Book from '../models/Book.js';
 
