@@ -59,12 +59,45 @@
  * @format
  */
 
-import React from 'react';                          // ← ADD React import
-import { Platform, StatusBar, StyleSheet, useColorScheme, View } from 'react-native';  // ← ADD Platform
-import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
-import Home from './src/components/Home';
+// import React from 'react';                          // ← ADD React import
+// import { Platform, StatusBar, StyleSheet, useColorScheme, View } from 'react-native';  // ← ADD Platform
+// import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+// import Home from './src/components/Home';
 
-// ✅ guard notifee — native only, won't crash on web
+// // ✅ guard notifee — native only, won't crash on web
+// let notifee = null;
+// if (Platform.OS !== 'web') {
+//   const nf = require('@notifee/react-native');
+//   notifee = nf.default;
+// }
+
+// function App() {
+//   const isDarkMode = useColorScheme() === 'dark';
+
+//   return (
+//     <SafeAreaProvider>
+//       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+//       <Home />
+//     </SafeAreaProvider>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+// });
+
+// export default App;
+
+
+import React from 'react';
+import { Platform, StatusBar } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+// import { Provider } from 'react-redux';
+// import store from './src/network/store';
+import SwitchScreen from './src/routes/SwitchScreen';
+
 let notifee = null;
 if (Platform.OS !== 'web') {
   const nf = require('@notifee/react-native');
@@ -72,20 +105,14 @@ if (Platform.OS !== 'web') {
 }
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Home />
+      <StatusBar barStyle="dark-content" />
+      {/* <Provider store={store}> */}
+        <SwitchScreen />
+      {/* </Provider> */}
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
